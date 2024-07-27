@@ -18,6 +18,7 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func (h *Handler) initRoutes() {
 	h.router.POST("/test", h.AddTest)
 	h.router.GET("/test/:id", h.GetTest)
+	h.router.GET("/test", h.GetTests)
 }
 
 func New(storage storage) *Handler {
