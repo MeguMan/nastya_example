@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -16,11 +15,11 @@ func (h *Handler) GetTest(c *gin.Context) {
 		return
 	}
 
-	test, err := h.storage.SelectTestByID(ctx, id)
+	test, err := h.storage.GetTestByID(ctx, id)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, err)
 		return
 	}
 
-	c.JSON(http.StatusOK, fmt.Sprintf("ID: %d, text: %s", test.ID, test.Text))
+	c.JSON(http.StatusOK, test)
 }

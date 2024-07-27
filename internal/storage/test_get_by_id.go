@@ -4,7 +4,7 @@ import (
 	"context"
 )
 
-func (s *Storage) SelectTestByID(ctx context.Context, id int) (Test, error) {
+func (s *Storage) GetTestByID(ctx context.Context, id int) (Test, error) {
 	var test Test
 
 	err := s.db.QueryRowContext(ctx, "select id, text from test where id = $1", id).Scan(
