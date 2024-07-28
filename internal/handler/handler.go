@@ -16,9 +16,11 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) initRoutes() {
-	h.router.POST("/test", h.AddTest)
+	//h.router.POST("/test", h.AddTest)
 	h.router.GET("/test/:id", h.GetTest)
 	h.router.GET("/test", h.GetTests)
+	adminGroup := h.router.Group("/admin", h.GetRole)
+	adminGroup.POST("/test", h.AddTest)
 }
 
 func New(storage storage) *Handler {
